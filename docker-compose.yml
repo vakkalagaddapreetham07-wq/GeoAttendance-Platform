@@ -1,0 +1,67 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: attendance_mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - attendance_net
+
+  ml-service:
+    build:
+      context: ./ml-service
+      dockerfile: Dockerfile
+    container_name: attendance_ml_service
+    restart: always
+    ports:
+      - "5001:5001"
+    environment:
+      - PORT=5001
+    networks:
+      - attendance_net
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: attendance_backend
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+      - NODE_ENV=production
+      - MONGODB_URI=mongodb://mongodb:27017/geofence_attendance
+      - JWT_SECRET=production_geofence_secret_key_2026
+      - ML_SERVICE_URL=http://ml-service:5001
+      - DEFAULT_GEOFENCE_RADIUS=50
+    depends_on:
+      - mongodb
+      - ml-service
+    networks:
+      - attendance_net
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: attendance_frontend
+    restart: always
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - attendance_net
+
+volumes:
+  mongo_data:
+
+networks:
+  attendance_net:
+    driver: bridge

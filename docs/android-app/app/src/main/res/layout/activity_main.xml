@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="#F8FAFC">
+
+    <TextView
+        android:id="@+id/tvAppTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Geofence Attendance"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="#0F172A"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/tvEmployeeName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Employee: Loading..."
+        android:textSize="16sp"
+        android:textColor="#475569"
+        android:layout_marginBottom="4dp" />
+
+    <TextView
+        android:id="@+id/tvDeviceBinding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bound Device: Verifying..."
+        android:textSize="13sp"
+        android:textColor="#64748B"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Geofence Status Card -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#FFFFFF"
+        android:padding="16dp"
+        android:elevation="2dp"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GEOFENCE SUBSYSTEM (50M RADIUS)"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="#2563EB"
+            android:layout_marginBottom="6dp" />
+
+        <TextView
+            android:id="@+id/tvGeofenceStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Initializing Native Geofence..."
+            android:textSize="15sp"
+            android:textColor="#1E293B" />
+    </LinearLayout>
+
+    <!-- Attendance Status Card -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#FFFFFF"
+        android:padding="16dp"
+        android:elevation="2dp"
+        android:layout_marginBottom="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TODAY'S ATTENDANCE"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="#10B981"
+            android:layout_marginBottom="6dp" />
+
+        <TextView
+            android:id="@+id/tvAttendanceStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Status: Outside Geofence (Automatic check-in on entry)"
+            android:textSize="15sp"
+            android:textColor="#1E293B" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sync Live Status"
+        android:backgroundTint="#2563EB"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="12dp" />
+
+    <Button
+        android:id="@+id/btnApplyLeave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit Leave Request"
+        android:backgroundTint="#64748B"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="12dp" />
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Log Out"
+        android:backgroundTint="#EF4444"
+        android:textColor="#FFFFFF" />
+
+</LinearLayout>
